@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pkl
+*.log
+*.png
+*.jpg
+*.jpeg
+data/
+venv/
+.env
+.DS_Store
+.ipynb_checkpoints/
