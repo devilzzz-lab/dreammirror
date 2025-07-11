@@ -9,8 +9,8 @@ Welcome to the DreamMirror AI project! 🌙 This document outlines the rules and
 | Branch Name | Purpose                            | Who Can Push         |
 |-------------|------------------------------------|----------------------|
 | main        | Production-ready code (protected)  | 🔐 Only Devil (lead) |
-| srimathi    | Personal branch for srimathi       | ✅ Srimathi only     |
-| saran       | Personal branch for saran 2        | ✅ Teammate 2 only   |
+| srimathi    | Personal branch for srimathi       | ✅ srimathi only     |
+| saran       | Personal branch for saran 2        | ✅ saran 2 only   |
 | swetha      | Perosnal branch for swetha         | (same rule)          |
 
 ---
