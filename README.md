@@ -15,7 +15,7 @@ Welcome to the DreamMirror AI project! 🌙 This document outlines the rules and
 
 ---
 
-## 🧑‍💻 Your Contribution Workflow
+## 🧑‍💻 Your Contribution Workflow.
 
 1. Clone the repo:
 
