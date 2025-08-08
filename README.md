@@ -40,7 +40,7 @@ Welcome to the DreamMirror AI project! 🌙 This document outlines the rules and
 
    ```bash
    git add .
-   git commit -m "✨ Your commit message here"
+   git commit -m "Your commit message here"
    git push origin teammate1
    ```
 
