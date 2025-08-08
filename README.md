@@ -11,7 +11,7 @@ Welcome to the DreamMirror AI project! 🌙 This document outlines the rules and
 | main        | Production-ready code (protected)  | 🔐 Only Devil (lead) |
 | srimathi    | Personal branch for srimathi       | ✅ srimathi only     |
 | saran       | Personal branch for saran          | ✅ saran only        |
-| swetha      | Perosnal branch for swetha         | (same rule)          |
+| swetha      | Personal branch for swetha         | (same rule)          |
 
 ---
 
