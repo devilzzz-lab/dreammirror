@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>DreamMirror AI</title>
 </head>
 <body>
+
   <h1>🌙 DreamMirror AI</h1>
   <p>DreamMirror AI is an interactive project that takes your dream description, analyzes it using NLP, and generates surreal dream visuals using Stable Diffusion with Apple Silicon MPS acceleration.</p>
 
   <h2>🤝 Contributing & Branch Rules</h2>
-  <table border="1">
+  <table border="1" cellpadding="5" cellspacing="0">
     <tr>
       <th>Branch Name</th>
       <th>Purpose</th>
@@ -64,11 +66,11 @@ git push origin srimathi</pre>
   </ol>
 
   <h2>🔒 Main Branch Protection</h2>
-  <p>Direct pushes to main are blocked for everyone except Devil.<br>
+  <p>Direct pushes to <b>main</b> are blocked for everyone except Devil.<br>
   All updates to main must go through Pull Requests.<br>
   This keeps main stable and production-ready.</p>
 
-  <h2>🛠 Installation Guide</h2>
+  <h2>🛠 Installation & Run</h2>
   <ol>
     <li>
       <b>Create & Activate Virtual Environment</b>
@@ -77,30 +79,17 @@ source venv/bin/activate       # Mac / Linux
 venv\Scripts\activate          # Windows</pre>
     </li>
     <li>
-      <b>Install Requirements</b>
-      <pre>pip install -r requirements.txt</pre>
-    </li>
-    <li>
-      <b>Download Required Data</b>
-      <pre>python -m spacy download en_core_web_sm
-python -m textblob.download_corpora
-python -m nltk.downloader vader_lexicon</pre>
+      <b>Install dependencies and download spaCy model</b>
+      <pre>pip install numpy pillow spacy textblob nltk torch torchvision torchaudio diffusers transformers accelerate safetensors tqdm opencv-python && python3 -m spacy download en_core_web_sm</pre>
     </li>
   </ol>
 
-  <h2>🚀 Running DreamMirror AI</h2>
-  <p>Run the interactive dream analysis + image generation pipeline:</p>
-  <pre>python app/full_dream_pipeline.py</pre>
-  <p>The program will:</p>
-  <ul>
-    <li>Ask you to describe your dream.</li>
-    <li>Analyze the text for keywords, emotions, and themes.</li>
-    <li>Generate a Stable Diffusion prompt.</li>
-    <li>Create AI dream visuals in <b>data/</b> folder.</li>
-  </ul>
+  <h2>🚀 Run DreamMirror AI</h2>
+  <pre>python3 -m app.full_dream_pipeline</pre>
 
   <h3>📌 Example Output</h3>
-  <pre>🌙 Welcome to DreamMirror AI 🌌
+  <pre>
+🌙 Welcome to DreamMirror AI 🌌
 📝 Describe your dream: I was flying over glowing cities at night.
 
 🔍 Analyzing your dream...
@@ -111,17 +100,21 @@ python -m nltk.downloader vader_lexicon</pre>
 ✅ Saved: data/generated_dream_1.png
 ✅ Saved: data/generated_dream_2.png
 ✅ Saved: data/generated_dream_3.png
-</pre>
+  </pre>
 
   <h2>✅ Best Practices for Team</h2>
   <ul>
-    <li>Always work in your assigned branch.</li>
-    <li>Never push directly to main.</li>
-    <li>Keep commits small and meaningful.</li>
-    <li>Sync with main before starting new work.</li>
-    <li>Use pull requests for all merges.</li>
+    <li>Main branch is closed (protected); never push directly to <b>main</b>.</li>
+    <li>Always check if <b>main</b> has updates before starting work.</li>
+    <li>Work only in your assigned personal branch.</li>
+    <li>To check and sync with main, run:</li>
   </ul>
+  <pre>
+git checkout main
+git pull origin main
+  </pre>
 
   <p>💡 Let's turn dreams into reality — together! ✨</p>
+
 </body>
 </html>
