@@ -56,7 +56,7 @@ cd dreammirror</pre>
       <b>Make your changes</b>
       <pre>git add .
 git commit -m "Your commit message"
-git push origin srimathi</pre>  # your assigned branch name
+git push origin srimathi</pre> 
     </li>
     <li>
       <b>Request merge</b><br>
