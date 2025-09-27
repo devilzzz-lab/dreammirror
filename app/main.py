@@ -4,10 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from analysis.dream_analyzer import analyze_dream
-from generation.prompt_builder import generate_prompt
-from generation.mps_image_generator import generate_dream_image
-from chatbot.support_bot import get_support_reply
+from app.analysis.dream_analyzer import analyze_dream
+from app.generation.prompt_builder import generate_prompt
+from app.generation.mps_image_generator import generate_dream_image
+from app.chatbot.support_bot import get_support_reply
 
 # --- Setup ---
 app = FastAPI()
@@ -15,7 +15,7 @@ app = FastAPI()
 # Allow React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # your React app URL
+    allow_origins=["*"],  # your React app URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

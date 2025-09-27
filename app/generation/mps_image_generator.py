@@ -17,14 +17,18 @@ def generate_dream_image(prompt, num_images=3, save_dir="dream_outputs", resolut
 
     os.makedirs(save_dir, exist_ok=True)
 
+    # Detect device (M1/M2 → MPS, else CPU)
     device = "mps" if torch.backends.mps.is_available() else "cpu"
     print(f"📌 Using device: {device}")
 
+    # Load pipeline (from cache if mounted into Docker)
     pipe = StableDiffusionPipeline.from_pretrained(
         "runwayml/stable-diffusion-v1-5",
+        cache_dir="/root/.cache/huggingface",  # use mounted cache
         torch_dtype=torch.float32,
         use_safetensors=True,
     ).to(device)
+
     pipe.enable_attention_slicing()
 
     # Generate images
@@ -38,7 +42,7 @@ def generate_dream_image(prompt, num_images=3, save_dir="dream_outputs", resolut
     )
     images = result.images
 
-    # Determine next available file index
+    # Ensure unique filenames
     base = 1
     while os.path.exists(os.path.join(save_dir, f"generated_dream_{base}.png")):
         base += 1
