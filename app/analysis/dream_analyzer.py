@@ -1,30 +1,26 @@
-# analysis/dream_analyzer.py
-
 import spacy
 from textblob import TextBlob
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import nltk
 
-# Download VADER lexicon if not already present
+# Download VADER if missing
 nltk.download("vader_lexicon", quiet=True)
 
-# Load English NLP model
+# Load spaCy model
 nlp = spacy.load("en_core_web_sm")
 sid = SentimentIntensityAnalyzer()
 
-def analyze_dream(text):
+def analyze_dream(text: str):
     doc = nlp(text)
 
     nouns = [token.text for token in doc if token.pos_ == "NOUN"]
     adjectives = [token.text for token in doc if token.pos_ == "ADJ"]
     verbs = [token.text for token in doc if token.pos_ == "VERB"]
 
-    # TextBlob for polarity and subjectivity
     blob = TextBlob(text)
     polarity = blob.sentiment.polarity
     subjectivity = blob.sentiment.subjectivity
 
-    # VADER for emotion/sentiment score
     vader_score = sid.polarity_scores(text)
 
     return {
@@ -33,5 +29,5 @@ def analyze_dream(text):
         "verbs": list(set(verbs)),
         "polarity": polarity,
         "subjectivity": subjectivity,
-        "emotion_score": vader_score
+        "emotion_score": vader_score,
     }

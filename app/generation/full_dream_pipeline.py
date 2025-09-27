@@ -1,5 +1,3 @@
-# app/full_dream_pipeline.py
-
 from analysis.dream_analyzer import analyze_dream
 from generation.prompt_builder import generate_prompt
 from generation.mps_image_generator import generate_dream_image
@@ -15,15 +13,13 @@ def main():
     prompt = generate_prompt(analysis)
     print(f"✨ Prompt: {prompt}")
 
-    print("\n🎨 Generating all the images from dream...")
-    image_paths = generate_dream_image(prompt, num_images=3)
+    print("\n🎨 Generating dream images...")
+    image_paths = generate_dream_image(prompt, num_images=3, save_dir="dream_outputs")
 
-    print("\n🖼️ All dream images generated:")
+    print("\n🖼️ Dream images generated:")
     for path in image_paths:
         print(f" - {path}")
-        
-    print("🖼️ Open the image to see your dream come to life!\n")
-    
+
     while True:
         print("\nWhat would you like to do next?")
         print("1️⃣  Regenerate dream visuals")
@@ -34,7 +30,7 @@ def main():
 
         if choice == "1":
             print("\n🔁 Regenerating dream visuals...")
-            image_paths = generate_dream_image(prompt, num_images=3)
+            image_paths = generate_dream_image(prompt, num_images=3, save_dir="dream_outputs")
             for path in image_paths:
                 print(f" - {path}")
         elif choice == "2":

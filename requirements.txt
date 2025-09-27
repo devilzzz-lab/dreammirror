@@ -1,0 +1,23 @@
+# Core server
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+
+# CORS for frontend
+flask==3.0.3
+flask-cors==5.0.0
+
+# NLP and sentiment analysis
+textblob==0.18.0.post0
+nltk==3.9.1
+
+# AI / Diffusion
+torch==2.8.0
+torchvision==0.23.0   # compatible with torch 2.8 on macOS M1/M2
+diffusers==0.30.3
+transformers==4.46.3
+safetensors==0.4.5
+accelerate==1.1.1
+
+# Utilities
+Pillow==11.0.0

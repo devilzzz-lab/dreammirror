@@ -22,7 +22,7 @@ export default function DreamMirror() {
     setPrompt("");
 
     try {
-      const res = await axios.post("http://localhost:5000/analyze", { dream });
+      const res = await axios.post("http://localhost:8000/analyze", { dream });
       setAnalysis(res.data.analysis);
       setPrompt(res.data.prompt);
       setImages(res.data.images);
@@ -41,7 +41,7 @@ export default function DreamMirror() {
     setChatInput("");
 
     try {
-      const res = await axios.post("http://localhost:5000/chat", { message: chatInput });
+      const res = await axios.post("http://localhost:8000/chat", { message: chatInput });
       const botMsg = { sender: "bot", text: res.data.reply };
       setChatMessages((prev) => [...prev, botMsg]);
     } catch (err) {
@@ -72,7 +72,7 @@ export default function DreamMirror() {
             <p>{prompt}</p>
             <div className="image-grid">
               {images.map((img, i) => (
-                <img key={i} src={`http://localhost:5000/${img}`} alt="dream" />
+                <img key={i} src={`http://localhost:8000${img}`} alt="dream" />
               ))}
             </div>
           </div>
