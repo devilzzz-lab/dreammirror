@@ -1,0 +1,76 @@
+/* General body styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff4ecd, #6a0dad);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Signup form container */
+.signup-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  width: 350px;
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+/* Title */
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Input fields */
+.signup-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: rgba(17, 17, 17, 0.15);
+  color: white;
+  font-size: 16px;
+}
+
+/* Button */
+.signup-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #b84bff, #ff4ecd);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.signup-container button:hover {
+  opacity: 0.9;
+}
+
+/* Login link */
+.signup-container p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.signup-container p a {
+  color: #ffeb3b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-container p a:hover {
+  text-decoration: underline;
+}
