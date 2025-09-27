@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./DreamMirror.css";
 
@@ -9,7 +10,6 @@ export default function DreamMirror() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Chat state
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [chatLoading, setChatLoading] = useState(false);
@@ -26,6 +26,17 @@ export default function DreamMirror() {
       setAnalysis(res.data.analysis);
       setPrompt(res.data.prompt);
       setImages(res.data.images);
+
+      const newEntry = {
+        dream,
+        analysis: res.data.analysis,
+        prompt: res.data.prompt,
+        images: res.data.images,
+        date: new Date().toLocaleString(),
+      };
+
+      const prevHistory = JSON.parse(localStorage.getItem("dreamHistory")) || [];
+      localStorage.setItem("dreamHistory", JSON.stringify([newEntry, ...prevHistory]));
     } catch (err) {
       console.error(err);
       alert("Error analyzing dream.");
@@ -54,7 +65,6 @@ export default function DreamMirror() {
 
   return (
     <div className="dreammirror-container">
-      {/* Dream Section */}
       <div className="dream-section">
         <h1>🌙 DreamMirror AI</h1>
         <textarea
@@ -79,7 +89,6 @@ export default function DreamMirror() {
         )}
       </div>
 
-      {/* Chat Section */}
       <div className="chat-section">
         <h2>💬 Emotional Support AI</h2>
         <div className="chat-box">
@@ -100,6 +109,11 @@ export default function DreamMirror() {
           />
           <button onClick={handleChatSend}>Send</button>
         </div>
+      </div>
+
+      {/* 📜 History Button (Bottom-Right) */}
+      <div className="history-btn">
+        <Link to="/history">📜 View History</Link>
       </div>
     </div>
   );
