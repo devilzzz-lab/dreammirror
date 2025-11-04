@@ -24,7 +24,7 @@ def generate_dream_image(prompt, num_images=3, save_dir="dream_outputs", resolut
     # Load pipeline (from cache if mounted into Docker)
     pipe = StableDiffusionPipeline.from_pretrained(
         "runwayml/stable-diffusion-v1-5",
-        cache_dir="/root/.cache/huggingface",  # use mounted cache
+        cache_dir=os.path.expanduser("~/sd_models/runwayml_stable_diffusion_v1_5"),
         torch_dtype=torch.float32,
         use_safetensors=True,
     ).to(device)

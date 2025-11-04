@@ -31,7 +31,7 @@ export default function HistoryPage() {
               {entry.images.map((img, j) => (
                 <img
                   key={j}
-                  src={`http://localhost:5000/${img}`}
+                  src={`http://localhost:8000/${img}`}
                   alt="dream-history"
                 />
               ))}
