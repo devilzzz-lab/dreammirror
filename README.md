@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>🌙 DreamMirror AI - Project Guide</title>
 </head>
 <body>
 
   <h1>🌙 DreamMirror AI</h1>
-  <p>DreamMirror AI is an interactive project that takes your dream description, analyzes it using NLP, and generates surreal dream visuals using Stable Diffusion with Apple Silicon MPS acceleration.</p>
+  <p>DreamMirror AI is an interactive NLP and AI image generation system that takes your dream description, analyzes it for emotion and meaning, and generates surreal dream visuals using <b>Stable Diffusion (v1.5)</b> with Apple Silicon <b>MPS acceleration</b>.</p>
 
   <h2>🤝 Contributing & Branch Rules</h2>
   <table border="1" cellpadding="5" cellspacing="0">
@@ -17,8 +18,8 @@
     </tr>
     <tr>
       <td><b>main</b></td>
-      <td>Production-ready code (<b>protected</b>)</td>
-      <td>🔐 Only Devil (lead)</td>
+      <td>Production-ready and stable code (<b>protected</b>)</td>
+      <td>🔐 Only Devil (Lead)</td>
     </tr>
     <tr>
       <td><b>srimathi</b></td>
@@ -46,74 +47,119 @@ cd dreammirror</pre>
     </li>
     <li>
       <b>Checkout your personal branch</b>
-      <pre>git checkout srimathi  # Example: use your assigned branch name</pre>
+      <pre>git checkout srimathi   # Example: use your assigned branch name</pre>
     </li>
     <li>
-      <b>Pull latest main (optional, for sync)</b>
+      <b>Sync with latest main (recommended before edits)</b>
       <pre>git pull origin main</pre>
     </li>
     <li>
-      <b>Make your changes</b>
+      <b>Make and push your changes</b>
       <pre>git add .
-git commit -m "Your commit message"
-git push origin srimathi</pre> 
+git commit -m "Updated dream analysis module"
+git push origin srimathi</pre>
     </li>
     <li>
-      <b>Request merge</b><br>
-      Open a Pull Request from your branch to main. Only Devil (admin) can approve and merge.
+      <b>Create Pull Request</b><br>
+      Open a PR from your branch → <b>main</b>.<br>
+      Only Devil (admin) can review and merge.
     </li>
   </ol>
 
   <h2>🔒 Main Branch Protection</h2>
-  <p>Direct pushes to <b>main</b> are blocked for everyone except Devil.<br>
-  All updates to main must go through Pull Requests.<br>
-  This keeps main stable and production-ready.</p>
+  <p>The <b>main</b> branch is locked to prevent direct edits.<br>
+  All updates go through Pull Requests for code review and stability.</p>
 
-  <h2>🛠 Installation & Run</h2>
+  <h2>🛠 Backend Installation & Setup</h2>
   <ol>
     <li>
-      <b>Create & Activate Virtual Environment</b>
-      <pre>python3 -m venv venv
-source venv/bin/activate       # Mac / Linux
-venv\Scripts\activate          # Windows</pre>
+      <b>Create and activate virtual environment</b>
+      <pre>
+cd dreammirror
+python3 -m venv venv
+source venv/bin/activate       # (Mac / Linux)
+venv\Scripts\activate          # (Windows)
+      </pre>
     </li>
     <li>
-      <b>Install dependencies and download spaCy model</b>
-      <pre>pip install numpy pillow spacy textblob nltk torch torchvision torchaudio diffusers transformers accelerate safetensors tqdm opencv-python && python3 -m spacy download en_core_web_sm</pre>
+      <b>Install dependencies</b>
+      <pre>
+pip install --upgrade pip
+pip install -r requirements.txt
+      </pre>
+    </li>
+    <li>
+      <b>Download spaCy English model</b>
+      <pre>python -m spacy download en_core_web_sm</pre>
+    </li>
+    <li>
+      <b>Set Hugging Face local cache directory</b>
+      <pre>export HF_HOME=~/sd_models</pre>
     </li>
   </ol>
 
-  <h2>🚀 Run DreamMirror AI</h2>
-  <pre>python3 -m app.full_dream_pipeline</pre>
+  <h2>🚀 Run Backend Server</h2>
+  <pre>
+# Make sure you're inside the virtual environment
+cd dreammirror
+source venv/bin/activate
+
+# Start backend (FastAPI + Uvicorn)
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+  </pre>
 
   <h3>📌 Example Output</h3>
   <pre>
 🌙 Welcome to DreamMirror AI 🌌
-📝 Describe your dream: I was flying over glowing cities at night.
+📝 Describe your dream: I was walking through glowing forests under a violet sky.
 
-🔍 Analyzing your dream...
-🪄 Generating visual prompt...
-✨ Prompt: A surreal dream scene with cities, where someone is flying. Atmospheric lighting, soft surreal colors, mystical tone.
+🔍 Analyzing dream emotions...
+🪄 NLP Processing Complete.
+✨ Generated Prompt:
+A surreal dream landscape of glowing forests and violet skies, mystical ambiance, emotional tone: calm and wonder.
 
-🎨 Generating images...
-✅ Saved: data/generated_dream_1.png
-✅ Saved: data/generated_dream_2.png
-✅ Saved: data/generated_dream_3.png
+🎨 Generating visuals using Stable Diffusion (MPS accelerated)...
+✅ Saved: app/dream_outputs/generated_dream_1.png
+✅ Saved: app/dream_outputs/generated_dream_2.png
+✅ Saved: app/dream_outputs/generated_dream_3.png
   </pre>
 
-  <h2>✅ Best Practices for Team</h2>
+  <h2>🎨 Frontend Setup (React)</h2>
+  <ol>
+    <li>
+      <b>Navigate to frontend folder</b>
+      <pre>cd dreammirror-frontend</pre>
+    </li>
+    <li>
+      <b>Install dependencies</b>
+      <pre>npm install</pre>
+    </li>
+    <li>
+      <b>Run the development server</b>
+      <pre>npm start</pre>
+    </li>
+    <li>
+      <b>Access the app in browser</b>
+      <pre>http://localhost:3000</pre>
+    </li>
+  </ol>
+
+  <h2>✅ Team Collaboration Best Practices</h2>
   <ul>
-    <li>Main branch is closed (protected); never push directly to <b>main</b>.</li>
-    <li>Always check if <b>main</b> has updates before starting work.</li>
+    <li>Never push directly to <b>main</b>.</li>
     <li>Work only in your assigned personal branch.</li>
-    <li>To check and sync with main, run:</li>
+    <li>Pull latest <b>main</b> before starting new work.</li>
+    <li>Keep commits clear and descriptive.</li>
+    <li>Test backend (FastAPI) and frontend (React) before pushing.</li>
   </ul>
+
+  <h3>To sync your local copy with main</h3>
   <pre>
 git checkout main
 git pull origin main
   </pre>
 
-  <p>💡 Let's turn dreams into reality — together! ✨</p>
+  <p>💡 Together, we turn dreams into AI-powered reality! ✨</p>
 
 </body>
 </html>
